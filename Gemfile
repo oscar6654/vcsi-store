@@ -15,6 +15,7 @@ gem 'kaminari'
 gem 'solidus_paypal_braintree', github: 'solidusio/solidus_paypal_braintree', branch: :master
 gem 'paperclip'
 gem 'fog-aws'
+gem "solidus_gateway"
 
 group :development do
   gem 'listen', '~> 3.0.5'
