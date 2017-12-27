@@ -9,6 +9,7 @@ Spree.config do |config|
   config.products_per_page = 8
   config.promotions_per_page = 8
   config.allow_guest_checkout = false
+  config.default_country_iso = "PH"
   # from address for transactional emails
   config.mails_from = "store@example.com"
 
