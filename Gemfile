@@ -7,6 +7,15 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'webpacker'
+gem 'solidus'
+gem 'solidus_auth_devise'
+gem 'materialize-sass'
+gem 'material_icons'
+gem 'kaminari'
+gem 'solidus_paypal_braintree', github: 'solidusio/solidus_paypal_braintree', branch: :master
+gem 'paperclip'
+gem 'fog-aws'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
@@ -21,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda-matchers', require: false
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :production do

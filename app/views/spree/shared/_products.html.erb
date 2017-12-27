@@ -1,0 +1,84 @@
+<div class="col s12 m12 l9">
+  <%
+    paginated_products = @searcher.retrieve_products if params.key?(:keywords)
+    paginated_products ||= products
+  %>
+
+  <% content_for :head do %>
+    <% if paginated_products.respond_to?(:total_pages) %>
+      <%= rel_next_prev_link_tags paginated_products %>
+    <% end %>
+  <% end %>
+
+
+  <div data-hook="products_search_results_heading">
+    <% if products.empty? %>
+      <div data-hook="products_search_results_heading_no_results_found">
+        <%= t('spree.no_products_found') %>
+      </div>
+    <% elsif params.key?(:keywords) %>
+      <div data-hook="products_search_results_heading_results_found">
+        <h6 class="search-results-title"><%= t('spree.search_results', keywords: h(params[:keywords])) %></h6>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+  <% if products.any? %>
+    <div class="hide-on-small-only">
+      <% products.each do |product| %>
+      <div class="col s6">
+        <div class="card hoverable">
+          <div class="card-content">
+          <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
+            <% cache(@taxon.present? ? [I18n.locale, current_pricing_options, @taxon, product] : [I18n.locale, current_pricing_options, product]) do %>
+                <div class="center"><%= link_to(render('spree/shared/image', image: product.display_image, size: :large, itemprop: "image"), url, itemprop: 'url') %></div>
+            <% end %>
+            <center><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></center>
+
+          </div>
+          <div class="card-action blue-grey">
+            <span class="price-tag" itemprop="price" content="<%= product.price_for(current_pricing_options).to_d %>">
+              <center><%= display_price(product) %></center>
+            </span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div style="padding-top: 5px"></div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="hide-on-med-and-up">
+      <% products.each do |product| %>
+      <div class="col s12">
+        <div class="card hoverable">
+          <div class="card-content">
+          <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
+            <% cache(@taxon.present? ? [I18n.locale, current_pricing_options, @taxon, product] : [I18n.locale, current_pricing_options, product]) do %>
+                <div class="center"><%= link_to(render('spree/shared/image', image: product.display_image, size: :small, itemprop: "image"), url, itemprop: 'url') %></div>
+            <% end %>
+            <center><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></center>
+          </div>
+          <div class="card-action blue-grey">
+            <span class="price-tag" itemprop="price" content="<%= product.price_for(current_pricing_options).to_d %>">
+              <center><%= display_price(product) %></center>
+            </span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div style="padding-top: 5px"></div>
+      </div>
+      <% end %>
+    </div>
+
+
+      <% reset_cycle("classes") %>
+
+  <% end %>
+  </div>
+
+  <% if paginated_products.respond_to?(:total_pages) %>
+    <%= paginate paginated_products %>
+  <% end %>
+</div>

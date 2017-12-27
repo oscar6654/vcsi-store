@@ -1,0 +1,53 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'spree/shared/head' %>
+  </head>
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+
+    <%= render partial: 'spree/shared/header' %>
+    <div class="container">
+
+      <div class="row">
+        <br/>
+        <div class="hide-on-small-only">
+          <%= taxon_breadcrumbs(@taxon) %>
+        </div>
+        <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+
+
+        <!-- <div id="content" class="columns <%= !content_for?(:sidebar) ? "sixteen" : "twelve omega" %>" data-hook> -->
+          <!-- <%= flash_messages %> -->
+
+          <% if flash[:notice] %>
+            <script type="text/javascript">
+              Materialize.toast('<%= notice %>', 6000)
+            </script>
+          <% elsif flash[:error] %>
+            <script type="text/javascript">
+              Materialize.toast('<%= flash[:error] %>', 6000)
+            </script>
+          <% elsif flash[:alert] %>
+            <script type="text/javascript">
+              Materialize.toast('<%= alert %>', 6000)
+            </script>
+          <% end %>
+
+          <%= yield %>
+        <!-- </div> -->
+
+
+
+        <%= yield :templates %>
+
+      </div>
+      <!-- <%= render partial: 'spree/shared/footer' %> -->
+
+    </div>
+
+  </body>
+</html>

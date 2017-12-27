@@ -1,0 +1,26 @@
+<% if !@product.taxons.blank? %>
+  <div class="hide-on-med-and-up center" id="taxon-crumbs" data-hook class="alpha columns five omega">
+    <h6 class="product-section-title"><%= t('spree.look_for_similar_items') %></h6>
+
+    <div data-hook="product_taxons">
+      <ul class="collection" id="similar_items_by_taxon" data-hook>
+      <% @product.taxons.each do |taxon| %>
+        <li class="collection-item"><%= link_to taxon.name, seo_url(taxon) %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  </div>
+  <div class="hide-on-small-only" id="taxon-crumbs" data-hook class="alpha columns five omega">
+    <h6 class="product-section-title"><%= t('spree.look_for_similar_items') %></h6>
+
+    <div data-hook="product_taxons">
+      <ul class="collection" id="similar_items_by_taxon" data-hook>
+      <% @product.taxons.each do |taxon| %>
+        <li class="collection-item"><%= link_to taxon.name, seo_url(taxon) %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  </div>
+<% end %>

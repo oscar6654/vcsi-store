@@ -1,0 +1,12 @@
+<% size ||= :mini %>
+<% itemprop ||= nil %>
+
+<% if image && image.attachment? %>
+  <% if itemprop %>
+    <%= image_tag image.attachment(size), size: "100x100"%>
+  <% else %>
+    <%= image_tag image.attachment(size), size: "100x100"%>
+  <% end %>
+<% else %>
+  <span class="<%= size %>"></span>
+<% end %>

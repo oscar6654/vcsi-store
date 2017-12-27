@@ -1,0 +1,7 @@
+    <li id="link-to-cart" data-hook>
+      <noscript>
+        <%= link_to t('spree.cart'), spree.cart_path %>
+      </noscript>
+      &nbsp;
+    </li>
+  <script>Spree.fetch_cart('<%= j spree.cart_link_path %>')</script>

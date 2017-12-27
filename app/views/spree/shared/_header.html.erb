@@ -1,0 +1,40 @@
+<!-- <header id="header" class="row" data-hook>
+  <figure id="logo" class="columns six" data-hook><%= logo %></figure>
+  <%= render partial: 'spree/shared/nav_bar' %>
+
+</header> -->
+<!-- <style>
+  .side-nav li > a {
+    padding: 0 16px;
+  }
+</style> -->
+<script>Spree.fetch_cart('<%= j spree.cart_link_path %>')</script>
+<header>
+<nav>
+  <div class="nav-wrapper container">
+    <!-- <div class="brand-logo"><%= logo img_options: {} %></div> -->
+    <a href="/" class="brand-logo">
+      <img src=<%= asset_path('vcsi.png')%> height="100" width="100" class="responsive-img" >
+    </a>
+    <!-- <a href="#!" class="brand-logo">Logo</a> -->
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">shopping_cart</i>Cart<i class="material-icons right">arrow_drop_down</i></a></li>
+      <%= render partial: 'spree/shared/nav_bar' %>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li id="" data-hook>
+        <%= link_to "My Cart", spree.cart_path %>
+      </li>
+
+      <%= render partial: 'spree/shared/taxonomies_mobile' %>
+      <%= render partial: 'spree/shared/nav_bar' %>
+    </ul>
+  </div>
+</nav>
+
+</header>
+
+<ul id="dropdown1" class="dropdown-content">
+  <%= render partial: 'spree/shared/main_nav_bar' if store_menu? %>
+</ul>
