@@ -19,8 +19,7 @@
             <%= render 'form', order_form: order_form %>
           </div>
           <br/>
-          <div>
-            <div class="left" data-hook="cart_buttons">
+            <div class="" data-hook="cart_buttons">
               <%= order_form.text_field :coupon_code, size: 15, placeholder: t('spree.coupon_code'), class: "browser-default", style: "height: 31px; font-size: 14px;"%>
               &nbsp;
               <%= button_tag class: 'primary', id: 'update-button' do %>
@@ -32,20 +31,19 @@
               <% end %>
             </div>
       <% end %>
-            <div class="right" id="" data-hook>
-              <%= form_tag empty_cart_path, method: :put do %>
-                <%= submit_tag t('spree.empty_cart'), class: 'button gray primary', style: "height: 31px" %>
-              <% end %>
-              <br/>
-              <%= link_to t('spree.continue_shopping'), products_path, class: 'button gray primary', style: "height: 31px" %>
-            </div>
-
-          </div>
-
         </div>
-
     </div>
 
 
   <% end %>
+</div>
+<br/>
+
+<div class="left-align" id="" data-hook>
+  <%= form_tag empty_cart_path, method: :put do %>
+    <%= submit_tag t('spree.empty_cart'), class: 'button gray primary', style: "height: 31px" %>
+    &nbsp;
+    <%= link_to t('spree.continue_shopping'), products_path, class: 'button gray primary', style: "height: 31px" %>
+  <% end %>
+
 </div>
