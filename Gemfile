@@ -16,6 +16,8 @@ gem 'solidus_paypal_braintree', github: 'solidusio/solidus_paypal_braintree', br
 gem 'paperclip'
 gem 'fog-aws'
 gem "solidus_gateway"
+gem 'solidus_paypal_express', github: "jtapia/better_solidus_paypal_express", branch: :master
+ # gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '2-4-stable'
 
 group :development do
   gem 'listen', '~> 3.0.5'

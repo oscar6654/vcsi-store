@@ -9,3 +9,4 @@
 //= require spree/backend
 //= require_tree .
 //= require spree/backend/solidus_paypal_braintree
+//= require spree/backend/solidus_paypal_express

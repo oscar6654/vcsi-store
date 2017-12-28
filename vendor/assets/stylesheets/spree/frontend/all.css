@@ -10,4 +10,5 @@
  *= require_tree .
  *= require material_icons
  *= require spree/frontend/solidus_paypal_braintree
+ *= require spree/frontend/solidus_paypal_express
 */
