@@ -12,6 +12,14 @@
 //   background: url(asset-path('cart.png')) no-repeat left center;
 // }
 
+[type="radio"]:not(:checked), [type="radio"]:checked{
+  position: relative;
+  opacity: 100;
+
+}
+.input-field [type="radio"]:checked{
+  padding-right: 5px;
+}
 #order_summary {
   margin-top: 0;
   padding-left: 5px;
