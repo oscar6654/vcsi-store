@@ -18,37 +18,34 @@
           <div data-hook="cart_items">
             <%= render 'form', order_form: order_form %>
           </div>
-          <!-- <br/> -->
+          <br/>
+          <div>
+            <div class="left" data-hook="cart_buttons">
+              <%= order_form.text_field :coupon_code, size: 15, placeholder: t('spree.coupon_code'), class: "browser-default", style: "height: 31px; font-size: 14px;"%>
+              &nbsp;
+              <%= button_tag class: 'primary', id: 'update-button' do %>
+                <%= t('spree.update') %>
+              <% end %>
+              &nbsp;
+              <%= button_tag class: 'button checkout primary', id: 'checkout-link', name: 'checkout' do %>
+                <%= t('spree.checkout') %>
+              <% end %>
+            </div>
+      <% end %>
+            <div class="right" id="" data-hook>
+              <%= form_tag empty_cart_path, method: :put do %>
+                <%= submit_tag t('spree.empty_cart'), class: 'button gray primary', style: "height: 31px" %>
+              <% end %>
+              <br/>
+              <%= link_to t('spree.continue_shopping'), products_path, class: 'button gray primary', style: "height: 31px" %>
+            </div>
+
+          </div>
 
         </div>
-      <% end %>
+
     </div>
 
-  <div>
-    <div class="left">
-      <%= form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form| %>
-      <br/>
-        <div class="" data-hook="cart_buttons">
-          <%= order_form.text_field :coupon_code, size: 15, placeholder: t('spree.coupon_code'), class: "browser-default", style: "height: 31px; font-size: 14px;"%>
-          &nbsp;
-          <%= button_tag class: 'primary', id: 'update-button' do %>
-            <%= t('spree.update') %>
-          <% end %>
-          &nbsp;
-          <%= button_tag class: 'button checkout primary', id: 'checkout-link', name: 'checkout' do %>
-            <%= t('spree.checkout') %>
-          <% end %>
-        </div>
-      <%end%>
-    </div>
-    <div class="right" id="" data-hook>
-      <%= form_tag empty_cart_path, method: :put do %>
-        <p id="clear_cart_link" data-hook>
-        <%= submit_tag t('spree.empty_cart'), class: 'button gray primary' %>
-        </p>
-      <% end %>
-      <%= link_to t('spree.continue_shopping'), products_path, class: 'button gray primary' %>
-    </div>
-  </div>
+
   <% end %>
 </div>

@@ -1,6 +1,17 @@
+<style>
+[type="radio"]:not(:checked), [type="radio"]:checked{
+  position: relative;
+  opacity: 100;
+}
+</style>
 <fieldset id="payment" data-hook>
   <legend align="center"><%= t('spree.payment_information') %></legend>
-  <div data-hook="checkout_payment_step">
+  <% if @order.state != 'confirm' %>
+    <div id="checkout-summary" data-hook="checkout_summary_box" class="col s12 l3">
+      <%= render partial: 'summary', locals: { order: @order } %>
+    </div>
+  <% end %>
+  <div data-hook="checkout_payment_step" class="col s12 l12">
     <% if @wallet_payment_sources.present? %>
       <div class="card_options">
         <%= radio_button_tag 'use_existing_card', 'yes', true %>
@@ -68,6 +79,8 @@
     <div id='coupon_status'></div>
 
   </div>
+
+
 </fieldset>
 
 <br class="space" />

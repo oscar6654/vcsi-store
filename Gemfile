@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'fog-aws'
 gem "solidus_gateway"
 gem 'solidus_paypal_express', github: "jtapia/better_solidus_paypal_express", branch: :master
+gem 'aws-sdk', '~> 2.6', '>= 2.6.48'
  # gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '2-4-stable'
 
 group :development do
