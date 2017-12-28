@@ -17,12 +17,11 @@
 <table id="cart-1" class="display nowrap" cellspacing="0" width="100%" data-hook>
   <thead>
     <tr data-hook="cart_items_headers">
-      <th></th>
-      <th><%= t('spree.item') %></th>
-      <th><%= t('spree.price') %></th>
-      <th><%= t('spree.qty') %></th>
-      <th><%= t('spree.total') %></th>
-      <th>Delete</th>
+      <th class="cart-item-description-header" colspan="2"><%= t('spree.item') %></th>
+      <th class="cart-item-price-header"><%= t('spree.price') %></th>
+      <th class="cart-item-quantity-header"><%= t('spree.qty') %></th>
+      <th class="cart-item-total-header"><%= t('spree.total') %></th>
+      <th class="cart-item-delete-header"></th>
     </tr>
   </thead>
   <tbody id="line_items" data-hook>
