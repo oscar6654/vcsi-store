@@ -12,7 +12,10 @@
 //   background: url(asset-path('cart.png')) no-repeat left center;
 // }
 
-
+table tbody tr td, table tfoot tr td{
+  vertical-align: middle;
+  padding: 5px
+}
 
 #order_summary {
   margin-top: 0;
