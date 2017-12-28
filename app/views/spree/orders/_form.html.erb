@@ -27,20 +27,17 @@
   <tbody id="line_items" data-hook>
     <%= render partial: 'spree/orders/line_item', collection: order.line_items, locals: { order_form: order_form } %>
   </tbody>
-</table>
-
-<table>
-<% if order.adjustments.nonzero.exists? || order.line_item_adjustments.nonzero.exists? || order.shipment_adjustments.nonzero.exists? || order.shipments.any? %>
-  <tr class="cart-subtotal">
-    <td colspan="4" align='right'><h5><%= t('spree.cart_subtotal', count: order.line_items.sum(:quantity)) %></h5></th>
-    <td colspan><h5><%= order.display_item_total %></h5></td>
+  <% if order.adjustments.nonzero.exists? || order.line_item_adjustments.nonzero.exists? || order.shipment_adjustments.nonzero.exists? || order.shipments.any? %>
+    <tr class="cart-subtotal">
+      <td colspan="4" align='right'><h5><%= t('spree.cart_subtotal', count: order.line_items.sum(:quantity)) %></h5></th>
+      <td colspan><h5><%= order.display_item_total %></h5></td>
+      <td></td>
+    </tr>
+    <%= render "spree/orders/adjustments" %>
+  <% end %>
+  <tr class="cart-total">
+    <td colspan="4" align='right'><h5><%= t('spree.total') %></h5></th>
+    <td colspan><h5><%= order.display_total %></h5></td>
     <td></td>
   </tr>
-  <%= render "spree/orders/adjustments" %>
-<% end %>
-<tr class="cart-total">
-  <td colspan="4" align='right'><h5><%= t('spree.total') %></h5></th>
-  <td colspan><h5><%= order.display_total %></h5></td>
-  <td></td>
-</tr>
 </table>
